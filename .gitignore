@@ -3,5 +3,6 @@
 
 .DS_Store
 .idea
+.nuxt
 
 yarn.lock
