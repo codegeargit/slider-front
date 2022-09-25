@@ -13,6 +13,11 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      {
+        src: 'https://developers.kakao.com/sdk/js/kakao.js'
+      }
     ]
   },
 
@@ -42,7 +47,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
+    baseURL: 'http://localhost:3003'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
