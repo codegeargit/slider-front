@@ -12,7 +12,7 @@
         console.log(`code : ${this.$route.query.code}`)
         const body = {
           code: this.$route.query.code,
-          domain: window.location.orgin
+          domain: window.location.origin
         }
         const response = await this.$axios.$post(
             '/auth/login', body, {}
