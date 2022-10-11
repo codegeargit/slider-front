@@ -1,25 +1,16 @@
 <template>
-  <a @click="loginWithKakao">
-    <img src="/kakao_login.png"/>
-  </a>
+  <div>
+    <div>Welcome!</div>
+    <div v-if="accessToken">{{accessToken}}</div>
+  </div>
 </template>
-
 <script>
 export default {
   name: 'IndexPage',
-  methods: {
-    kakaoInit() {
-      Kakao.init('497bcfa986482f48ba2ee19b185ca2b0')
-      Kakao.isInitialized()
-    },
-    async loginWithKakao() {
-      await Kakao.Auth.authorize({
-        redirectUri: `${window.location.origin}/kakao-callback`
-      })
+  computed: {
+    accessToken() {
+      return this.$store.state.accessToken;
     }
-  },
-  mounted(){
-    this.kakaoInit()
   }
 }
 </script>
