@@ -18,11 +18,21 @@
             '/auth/login', body, {}
         )
         if(response){
-          console.log(response.accessToken);
-          this.$store.commit('accessToken', response.accessToken);
+          const accessToken = response.accessToken;
+          console.log(accessToken);
+          this.$store.commit('accessToken', accessToken);
+          const options = {
+            headers: {
+              Authorization: `Bearer ${accessToken}`
+            },
+          };
+          //토큰을 가지고 사용자 정보 조회
+          const user = await this.$axios.get("/auth/user", options);
+          const loginUser = user.data;
+          console.log(loginUser);
+          this.$store.commit('user', loginUser);
         }
         return this.$router.replace('/')
-        // console.log(response)
       }catch(error){
         console.log(error)
       }

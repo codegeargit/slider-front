@@ -10,6 +10,7 @@
           <b-nav-item href="/login" right>로그인</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto" v-if="accessToken && accessToken!==''">
+          <b-nav-item @click="admin" right v-if="user.isAdmin">관리자</b-nav-item>
           <b-nav-item @click="logout" right>로그아웃</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
@@ -24,11 +25,17 @@ export default {
     async logout() {
       await this.$store.commit('accessToken', '');
       await this.$router.push('/');
+    },
+    async admin() {
+      alert('관리자 메뉴!!!')
     }
   },
   computed: {
     accessToken() {
       return this.$store.state.accessToken;
+    },
+    user() {
+      return this.$store.state.user;
     }
   }
 }
